@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.bobmandude9889.Infected.InfectedPlayer;
+import net.minecraft.server.v1_8_R1.World;
 
 import org.bukkit.Location;
 
 public class Arena {
-
+	
 	private List<InfectedPlayer> players;
 	
 	Location spawn;
