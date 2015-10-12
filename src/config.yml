@@ -1,0 +1,6 @@
+min_player: 4
+messages:
+   message_prefix: "[Infected] "
+   game_running: "That game is already running."
+   joined_game: "You are now in the game %game_id%."
+   other_joined_game: "%player% joined the game."

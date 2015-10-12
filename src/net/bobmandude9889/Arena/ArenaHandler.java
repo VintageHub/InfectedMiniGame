@@ -35,14 +35,24 @@ public class ArenaHandler {
 		if(file.exists()){
 			FileConfiguration config = YamlConfiguration.loadConfiguration(file);
 			String name = file.getName().replace(".yml", "");
-			List<String> data = config.getStringList("spawn");
-			List<Double> coords = new ArrayList<Double>();
-			for(int i = 1; i < data.size(); i++){
-				String string = data.get(i);
-				coords.add(Double.parseDouble(string));
+			
+			List<String> spawnData = config.getStringList("spawn");
+			List<Double> spawnCoords = new ArrayList<Double>();
+			for(int i = 1; i < spawnData.size(); i++){
+				String string = spawnData.get(i);
+				spawnCoords.add(Double.parseDouble(string));
 			}
-			Location spawn = new Location(Bukkit.getWorld(data.get(0)),coords.get(0),coords.get(1),coords.get(2));
-			arenas.put(name, new Arena(spawn));
+			Location spawn = new Location(Bukkit.getWorld(spawnData.get(0)),spawnCoords.get(0),spawnCoords.get(1),spawnCoords.get(2));
+
+			List<String> waitData = config.getStringList("wait");
+			List<Double> waitCoords = new ArrayList<Double>();
+			for(int i = 1; i < waitData.size(); i++){
+				String string = waitData.get(i);
+				waitCoords.add(Double.parseDouble(string));
+			}
+			Location wait = new Location(Bukkit.getWorld(waitData.get(0)),waitCoords.get(0),waitCoords.get(1),waitCoords.get(2));
+			
+			arenas.put(name, new Arena(spawn,wait,""));
 		} else {
 			Errors.FILENOTFOUND.broadcastToOps(file.getName());
 		}
